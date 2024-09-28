@@ -27,7 +27,7 @@ Death counter es un contador de muertes personalizable para tu stream de Twitch.
 3. **Ejemplo de URL personalizada:** `https://trinilup.github.io/death-counter/?channel=trinilup&onlyMods=true&command=rip`
 4. **Añade la URL final a tu software de streaming.**
 5. **¡Listo!** Tu contador de muertes se mostrará en tu stream.
-6. PD: el comando '!muerte?' sera el comando predeterminado para aumentar el contador.
+6. PD: el comando `!muerte` sera el comando predeterminado para aumentar el contador.
 
 ## Tecnologías utilizadas
 
