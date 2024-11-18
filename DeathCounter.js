@@ -11,7 +11,7 @@ const Fonts = {
 };
 
 export class DeathCounter {
-    constructor({channel, cooldown = 5000, command = 'muerte', font = 'Lilita One', fontSize = 8, onlyMods = false, image = null}) {
+    constructor({channel, cooldown = 5000, command = 'muerte', font = 'Lilita One', fontSize = 8, onlyMods = false, image = null, start = 0}) {
         this.channel = channel;
         this.cooldown = cooldown === null ? 5000 : cooldown;
         this.lastCommand = null;
@@ -20,6 +20,7 @@ export class DeathCounter {
         this.fontSize = fontSize;
         this.onlyMods = onlyMods;
         this.image = image;
+        this.start = start
 
         this.configParams();
 
@@ -27,8 +28,8 @@ export class DeathCounter {
 
         client.connect({ channels: [channel] });
 
-        const numberElement = document.querySelector('#number');
-        numberElement.innerHTML = 0;
+        let numberElement = document.querySelector('#number');
+        numberElement.innerHTML = this.start;
 
         client.on('message', ({channel, username, message, badges}) => {
             const isMod = badges.map(badge => badge.name.toLowerCase()).includes('moderator') || badges.map(badge => badge.name.toLowerCase()).includes('broadcaster');
@@ -41,6 +42,7 @@ export class DeathCounter {
 
             const command = message.split(" ").at(0).toLowerCase();
             if (command.includes('!' + this.command.toLowerCase())) {
+                numberElement = document.querySelector('#number');
                 numberElement.innerHTML = parseInt(numberElement.innerHTML) + 1;
                 this.lastCommand = new Date().getTime();
             }
