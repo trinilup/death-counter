@@ -8,6 +8,7 @@ const fontFamily = getParams('fontFamily');
 const fontSize = getParams('fontSize');
 const onlyMods = Boolean(getParams('onlyMods'));
 const image = getParams('image');
+const start = getParams('start') || 0;
 
 
-new DeathCounter({channel, cooldown, command, font, fontSize, fontFamily, onlyMods, image});
+new DeathCounter({channel, cooldown, command, font, fontSize, fontFamily, onlyMods, image, start});
